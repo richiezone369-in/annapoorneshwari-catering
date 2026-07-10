@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Annapoorneshwari Amma's Catering</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',system-ui,sans-serif; background:#0a1f14; color:#f5ede0; overflow-x:hidden; }
+.serif { font-family:'Playfair Display',Georgia,serif; }
+.gold { color:#c5a46e; }
+.rule { height:1px; background:linear-gradient(90deg,transparent,#c5a46e,transparent); }
+
+nav { position:fixed; inset:0 0 auto 0; z-index:50; padding:24px 32px; transition:.4s; }
+nav.scrolled { background:rgba(10,31,20,0.95); backdrop-filter:blur(16px); border-bottom:1px solid rgba(197,164,110,0.15); padding:14px 32px; }
+.nav-inner { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+.brand-small { font-size:11px; letter-spacing:4px; color:#f5ede0; margin-bottom:2px; }.brand-big { font-family:'Playfair Display',serif; font-size:18px; letter-spacing:3px; }
+.nav-links { display:flex; gap:40px; }
+.nav-links a { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:rgba(245,237,224,0.6); text-decoration:none; transition:.3s; }
+.nav-links a:hover { color:#c5a46e; }
+.nav-btn { border:1px solid rgba(197,164,110,0.5); color:#c5a46e; padding:9px 20px; font-size:11px; letter-spacing:2px; text-decoration:none; display:flex; align-items:center; gap:8px; transition:.3s; }
+.nav-btn:hover { background:#c5a46e; color:#0a1f14; }
+@media (max-width:900px){ .nav-links,.nav-btn{display:none;} }
+
+.hero { height:100vh; min-height:700px; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; transform:scale(1.1); }
+.hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,#0a1f14 10%,rgba(10,31,20,.5) 55%,rgba(10,31,20,.15)); }
+.hero-bg::before { content:''; position:absolute; inset:0; background:linear-gradient(to right,rgba(10,31,20,.6),transparent 60%); z-index:1; }
+.hero-content { position:relative; z-index:2; max-width:1400px; margin:0 auto; padding:0 32px 100px; width:100%; }
+.hero-tag { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.hero-tag .line { width:32px; height:1px; background:#c5a46e; }
+.hero-tag span { font-size:12px; letter-spacing:5px; color:#c5a46e; text-transform:uppercase; }
+h1.hero-title { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(44px,9vw,110px); line-height:.9; letter-spacing:-2px; margin-bottom:28px; }
+h1.hero-title em { color:#c5a46e; font-style:italic; }
+.hero-cta { display:flex; align-items:center; gap:30px; flex-wrap:wrap; }
+.btn-gold { background:#c5a46e; color:#0a1f14; font-weight:700; font-size:12px; letter-spacing:3px; text-transform:uppercase; padding:16px 38px; border:none; cursor:pointer; text-decoration:none; display:inline-block; transition:.3s; }
+.btn-gold:hover { background:#d4b77f; transform:translateY(-2px); }
+.wa-link { display:flex; align-items:center; gap:12px; color:rgba(245,237,224,0.7); text-decoration:none; font-size:13px; }
+.wa-circle { width:40px; height:40px; border:1px solid currentColor; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.wa-link:hover { color:#c5a46e; }
+
+.numbers { border-top:1px solid rgba(197,164,110,.15); border-bottom:1px solid rgba(197,164,110,.15); padding:40px 32px; }
+.numbers-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+.numbers-grid .num { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,44px); color:#c5a46e; font-weight:700; margin-bottom:4px; }
+.numbers-grid .label { font-size:10px; letter-spacing:2px; color:rgba(245,237,224,.45); text-transform:uppercase; }
+@media (max-width:700px){ .numbers-grid{grid-template-columns:repeat(2,1fr);} }
+
+.about { background:#f5ede0; color:#0a1f14; padding:120px 32px; }
+.about-inner { max-width:1300px; margin:0 auto; }
+.about-head { display:grid; grid-template-columns:7fr 5fr; gap:32px; align-items:end; margin-bottom:70px; }
+.tag { font-size:11px; letter-spacing:5px; color:#c5a46e; text-transform:uppercase; font-weight:700; margin-bottom:20px; }
+.about-head h2 { font-family:'Playfair Display',serif; font-size:clamp(38px,6vw,72px); line-height:.9; letter-spacing:-2px; font-weight:700; }
+.about-head p { color:rgba(10,31,20,.65); border-left:2px solid #c5a46e; padding-left:22px; font-size:15px; line-height:1.7; }
+.split { display:grid; grid-template-columns:1fr 1fr; }
+.split img { width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; display:block; }
+.split-panel { background:#0a1f14; color:#f5ede0; padding:50px 44px; }
+.wmd-tag { font-size:10px; letter-spacing:5px; color:#c5a46e; text-transform:uppercase; margin-bottom:34px; }
+.point { display:flex; gap:22px; margin-bottom:28px; }
+.point-no { font-family:'Playfair Display',serif; color:rgba(197,164,110,.4); font-size:20px; font-weight:700; }
+.point h4 { font-family:'Playfair Display',serif; font-size:17px; margin-bottom:6px; }
+.point p { font-size:13px; color:rgba(245,237,224,.5); line-height:1.6; }
+.divider { height:1px; background:rgba(245,237,224,.1); margin-bottom:28px; }
+.quote-box { border:1px solid rgba(197,164,110,.3); padding:22px; border-radius:16px; margin-top:20px; }
+.quote-box p { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:rgba(245,237,224,.8); margin-bottom:12px; }
+@media (max-width:800px){ .about-head,.split{grid-template-columns:1fr;} .split img{aspect-ratio:16/9;} }
+
+.menu-section { background:#f5ede0; color:#0a1f14; padding:100px 32px 130px; }
+.menu-inner { max-width:1200px; margin:0 auto; }
+.menu-head { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:60px; }
+.menu-head h2 { font-family:'Playfair Display',serif; font-size:clamp(34px,5.5vw,62px); font-weight:700; letter-spacing:-1.5px; line-height:.9; }
+.menu-head p { max-width:260px; font-size:13px; color:rgba(10,31,20,.55); }
+.menu-row { border:1px solid rgba(10,31,20,.1); background:rgba(255,255,255,.5); border-radius:16px; padding:26px 30px; display:grid; grid-template-columns:40px 90px 1fr 2fr; gap:16px; align-items:center; margin-bottom:14px; transition:.3s; }
+.menu-row:hover { border-color:rgba(197,164,110,.5); background:#fff; }
+.menu-row .m-no { font-family:'Playfair Display',serif; font-size:26px; color:rgba(197,164,110,.35); font-weight:700; }
+.tag-badge { font-size:9px; font-weight:700; letter-spacing:1.5px; padding:4px 8px; border-radius:5px; display:inline-block; }
+.tag-veg { background:#d1fae5; color:#047857; }
+.tag-nonveg { background:#fef3c7; color:#b45309; }
+.m-title { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; }
+.m-items { font-size:13px; color:rgba(10,31,20,.5); line-height:1.5; }
+@media (max-width:750px){ .menu-row{grid-template-columns:1fr; text-align:left;} }
+
+.custom-card { background:#0a1f14; color:#f5ede0; border-radius:18px; padding:44px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; margin-top:20px; }
+.custom-card h3 { font-family:'Playfair Display',serif; font-size:26px; margin-bottom:8px; }
+.custom-card p { font-size:13px; color:rgba(245,237,224,.55); max-width:400px; }
+
+.feature { background:#0a1f14; display:grid; grid-template-columns:1fr 1fr; min-height:65vh; }
+.feature img { width:100%; height:100%; object-fit:cover; display:block; }
+.feature-text { padding:70px 60px; display:flex; flex-direction:column; justify-content:center; }
+.feature-text h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px); line-height:1.15; margin-bottom:22px; }
+.feature-text p { color:rgba(245,237,224,.55); font-size:15px; line-height:1.7; margin-bottom:30px; max-width:440px; }
+.feature-link { color:#c5a46e; border-bottom:1px solid rgba(197,164,110,.4); padding-bottom:4px; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:inline-flex; align-items:center; gap:10px; }
+@media (max-width:800px){ .feature{grid-template-columns:1fr;} .feature img{aspect-ratio:16/9;} }
+
+.services { background:#f5ede0; color:#0a1f14; padding:120px 32px; }
+.services-inner { max-width:1300px; margin:0 auto; }
+.services-head { text-align:center; margin-bottom:70px; }
+.services-head h2 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,58px); font-weight:700; }
+.services-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(10,31,20,.08); }
+.service-card { background:#f5ede0; padding:50px 46px; transition:.3s; }
+.service-card:hover { background:#fff; }
+.service-top { display:flex; justify-content:space-between; margin-bottom:30px; }
+.service-no { font-family:'Playfair Display',serif; font-size:44px; color:rgba(10,31,20,.1); font-weight:700; }
+.service-emoji { font-size:28px; }
+.service-card h3 { font-family:'Playfair Display',serif; font-size:23px; margin-bottom:14px; }
+.service-card p { font-size:13.5px; color:rgba(10,31,20,.55); line-height:1.6; }
+.service-line { width:32px; height:1px; background:#c5a46e; margin-top:26px; }
+@media (max-width:700px){ .services-grid{grid-template-columns:1fr;} }
+
+.gallery { background:#0a1f14; padding:120px 32px; }
+.gallery-inner { max-width:1300px; margin:0 auto; }
+.gallery-head { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:44px; }
+.gallery-head h2 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,58px); font-weight:700; }
+.gallery-head a { color:rgba(197,164,110,.6); text-decoration:none; font-size:11px; letter-spacing:2px; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:10px; }
+.gallery-grid img { width:100%; height:100%; object-fit:cover; border-radius:14px; display:block; transition:.5s; }
+.gallery-grid > div:hover img { transform:scale(1.06); }
+.gallery-grid > div { overflow:hidden; border-radius:14px; }
+.g-big { grid-column:span 2; grid-row:span 2; }
+@media (max-width:700px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .g-big{grid-column:span 2; grid-row:span 1;} }
+
+.reviews { background:#0f2a1a; padding:120px 32px; }
+.reviews-inner { max-width:1100px; margin:0 auto; }
+.reviews-head { text-align:center; margin-bottom:70px; }
+.reviews-head h2 { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,58px); font-weight:700; }
+.reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.review-card { background:#0a1f14; border:1px solid rgba(197,164,110,.15); padding:32px; border-radius:16px; transition:.3s; }
+.review-card:hover { border-color:rgba(197,164,110,.35); transform:translateY(-6px); }
+.stars { color:#c5a46e; font-size:14px; margin-bottom:20px; letter-spacing:2px; }
+.review-card blockquote { font-family:'Playfair Display',serif; font-style:italic; color:rgba(245,237,224,.7); font-size:14px; line-height:1.7; margin-bottom:26px; }
+.review-name { font-weight:600; font-size:14px; }
+.review-loc { font-size:11px; letter-spacing:1px; color:rgba(245,237,224,.4); margin-top:2px; }
+@media (max-width:800px){ .reviews-grid{grid-template-columns:1fr;} }
+
+.contact { background:#f5ede0; color:#0a1f14; padding:120px 32px; }
+.contact-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+.contact h2 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,60px); line-height:.95; letter-spacing:-1.5px; font-weight:700; margin-bottom:36px; }
+.contact-intro { color:rgba(10,31,20,.6); font-size:15px; line-height:1.7; margin-bottom:44px; max-width:380px; }
+.contact-item { display:flex; align-items:center; gap:18px; margin-bottom:24px; }
+.contact-icon { width:44px; height:44px; background:#0a1f14; color:#c5a46e; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.contact-label { font-size:10px; letter-spacing:2px; color:rgba(10,31,20,.4); text-transform:uppercase; margin-bottom:2px; }
+.contact-val { color:#0a1f14; font-weight:600; font-size:14px; text-decoration:none; }
+.contact-val:hover { color:#c5a46e; }
+.form-card { background:#0a1f14; color:#f5ede0; padding:40px; border-radius:20px; }
+.form-tag { font-size:10px; letter-spacing:3px; color:#c5a46e; text-transform:uppercase; margin-bottom:26px; }
+.field label { display:block; font-size:9px; letter-spacing:2px; color:rgba(245,237,224,.4); text-transform:uppercase; margin-bottom:8px; }
+.field input,.field textarea { width:100%; background:rgba(245,237,224,.08); border:1px solid rgba(245,237,224,.12); border-radius:10px; padding:13px 15px; color:#f5ede0; font-size:14px; font-family:inherit; outline:none; margin-bottom:18px; }
+.field input:focus,.field textarea:focus { border-color:rgba(197,164,110,.5); }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.submit-btn { width:100%; background:#c5a46e; color:#0a1f14; font-weight:700; font-size:11px; letter-spacing:3px; text-transform:uppercase; padding:16px; border:none; border-radius:10px; cursor:pointer; }
+.submit-btn:hover { background:#d4b77f; }
+.form-note { text-align:center; font-size:10px; color:rgba(245,237,224,.3); margin-top:14px; }
+@media (max-width:800px){ .contact-inner{grid-template-columns:1fr;} .field-row{grid-template-columns:1fr;} }
+
+footer { background:#0a1f14; padding:60px 32px; border-top:1px solid rgba(197,164,110,.15); }
+.footer-inner { max-width:1300px; margin:0 auto; }
+.footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; margin-top:40px; }
+.footer-brand-small { font-size:10px; letter-spacing:4px; color:#c5a46e; text-transform:uppercase; margin-bottom:3px; }
+.footer-brand-big { font-family:'Playfair Display',serif; font-size:22px; }
+.footer-meta { font-size:10px; letter-spacing:1.5px; color:rgba(245,237,224,.3); text-align:center; }
+.footer-social { display:flex; gap:18px; }
+.footer-social a { color:rgba(245,237,224,.4); text-decoration:none; font-size:18px; }
+.footer-social a:hover { color:#c5a46e; }
+
+.wa-float { position:fixed; bottom:26px; right:26px; width:56px; height:56px; background:#c5a46e; color:#0a1f14; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(197,164,110,.5); z-index:60; text-decoration:none; font-size:24px; transition:.3s; }
+.wa-float:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(197,164,110,.6); }
+
+.reveal { opacity:0; transform:translateY(40px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); }
+.reveal.in-view { opacity:1; transform:translateY(0); }
+
+.parallax-img { background-attachment:fixed; background-position:center; background-size:cover; }
+@media (max-width:900px){ .parallax-img{background-attachment:scroll;} }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div style="display:flex; align-items:center; gap:12px;">
+<img src="images/logo.png" alt="Shree Annapoorneshwari Amma's Catering logo" style="height:72px; width:auto; mix-blend-mode:screen;">  <div>
+    <div class="brand-small">SHREE ANNAPOORNESHWARI</div>
+    <div class="brand-big">AMMA'S CATERING</div>
+  </div>
+</div>
+    <div class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menus</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="https://wa.me/919113254993" class="nav-btn"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+ <div class="hero-bg">
+  <img src="images/hero-chefs.png" alt="Chefs preparing traditional South Indian catering">
+</div>
+  <div class="hero-content">
+    <div class="hero-tag"><div class="line"></div><span>Premium Wedding Catering · Bengaluru</span></div>
+    <h1 class="hero-title">Made with<br><em>Amma's Love.</em></h1>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-gold">Explore Menus</a>
+      <a href="https://wa.me/919113254993?text=Hello, I would like to enquire about catering for an event" class="wa-link">
+        <span class="wa-circle"><i class="fa-brands fa-whatsapp"></i></span>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="numbers-grid reveal">
+    <div><div class="num">500+</div><div class="label">Events Catered</div></div>
+    <div><div class="num">20+</div><div class="label">Dishes per Sadhya</div></div>
+    <div><div class="num">100%</div><div class="label">Pure Veg Focus</div></div>
+    <div><div class="num">0</div><div class="label">Artificial Additives</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-head">
+      <div class="reveal">
+        <div class="tag">Our Heritage</div>
+        <h2>Amma's<br>Loving Kitchen</h2>
+      </div>
+      <div class="reveal">
+        <p>Born from the simple belief that food made with love and tradition has the power to bring people together, Shree Annapoorneshwari Amma's Catering carries forward generations of cherished recipes.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="reveal parallax-img" style="background-image:url('images/mandap.png'); aspect-ratio:4/5;"></div>
+      <div class="split-panel reveal">
+        <div class="wmd-tag">What Makes Us Different</div>
+        <div class="point">
+          <span class="point-no">01</span>
+          <div><h4>Pure Ingredients Only</h4><p>No artificial colours, no soda, no dalda, no palm oil. Ever.</p></div>
+        </div>
+        <div class="divider"></div>
+        <div class="point">
+          <span class="point-no">02</span>
+          <div><h4>Made with Devotion</h4><p>Traditional recipes passed down through generations — unchanged, uncompromised.</p></div>
+        </div>
+        <div class="divider"></div>
+        <div class="point">
+          <span class="point-no">03</span>
+          <div><h4>Banana Leaf Ceremony</h4><p>Each leaf laid with ritual care, every dish placed in its sacred position.</p></div>
+        </div>
+        <div class="quote-box">
+          <p>"Inspired by Goddess Annapoorneshwari — the divine provider of nourishment."</p>
+          <div style="width:32px;height:1px;background:#c5a46e;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <div class="menu-head reveal">
+      <div>
+        <div class="tag">Curated with Love</div>
+        <h2>Signature<br>Menus</h2>
+      </div>
+      <p>Fresh, homemade, prepared with the same love we give our own family.</p>
+    </div>
+
+    <div class="menu-row reveal">
+      <div class="m-no">01</div>
+      <div><span class="tag-badge tag-veg">PURE VEG</span></div>
+      <div class="m-title">Afternoon Lunch Thali</div>
+      <div class="m-items">Chapati · Veg Gravy · Poriyal · White Rice · Sambar · Rasam or Curd · Pappad · Sweet · Pickle · Salt</div>
+    </div>
+    <div class="menu-row reveal">
+      <div class="m-no">02</div>
+      <div><span class="tag-badge tag-veg">PURE VEG</span></div>
+      <div class="m-title">Breakfast Spread</div>
+      <div class="m-items">Idly · Vada · Dosa with Chutney &amp; Sambar · Upma · Poha · Poori Sagu · Chapati · Kesari Bath · Sevige Bath</div>
+    </div>
+    <div class="menu-row reveal">
+      <div class="m-no">03</div>
+      <div><span class="tag-badge tag-veg">PURE VEG</span></div>
+      <div class="m-title">South Indian Mini Buffet</div>
+      <div class="m-items">Veg Pallav · Kosambari · Raitha · Vegetable Palya · Sambar · Rasam · White Rice · Pappad · Pickle · Sweet</div>
+    </div>
+    <div class="menu-row reveal">
+      <div class="m-no">04</div>
+      <div><span class="tag-badge tag-nonveg">NON-VEG</span></div>
+      <div class="m-title">Non-Veg Specialties</div>
+      <div class="m-items">Chicken Biryani · Full Chicken Meals · Mutton Biryani · Mutton Meals · Romali Rotti · Raitha · Sweet</div>
+    </div>
+
+    <div class="custom-card reveal">
+      <div>
+        <div class="tag" style="margin-bottom:10px;">Bespoke</div>
+        <h3>Custom Menus Available</h3>
+        <p>We craft menus around your event size, dietary needs, and vision. No two celebrations are alike — your menu shouldn't be either.</p>
+      </div>
+      <a href="#contact" class="btn-gold">Request Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="reveal parallax-img" style="background-image:url('images/payasam.png');"></div>
+  <div class="feature-text reveal">
+    <div class="tag">The Sweet Finish</div>
+    <h2>Golden Payasam — the crescendo of every feast.</h2>
+    <div class="rule" style="max-width:80px; margin-bottom:24px;"></div>
+    <p>Simmered for hours in pure ghee over a slow flame. Cardamom, saffron, cashews. The dish that signals the perfect end to a perfect meal — and the beginning of lasting memories.</p>
+    <a href="https://wa.me/919113254993?text=Hello, I would like to enquire about catering for an event" class="feature-link">
+      <i class="fa-brands fa-whatsapp"></i> Enquire for Your Event →
+    </a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-head reveal">
+      <div class="tag" style="text-align:center;">How We Serve You</div>
+      <h2>Our Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-top"><span class="service-no">I</span><span class="service-emoji">💍</span></div>
+        <h3>Weddings &amp; Receptions</h3>
+        <p>Traditional banana leaf service or elegant plated meals. We scale to large guest counts without compromising a single detail.</p>
+        <div class="service-line"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-top"><span class="service-no">II</span><span class="service-emoji">🏢</span></div>
+        <h3>Corporate &amp; Office Catering</h3>
+        <p>Daily lunches, board meeting spreads, product launch dinners. Reliable, punctual, and uncompromisingly fresh.</p>
+        <div class="service-line"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-top"><span class="service-no">III</span><span class="service-emoji">🏠</span></div>
+        <h3>Housewarmings &amp; Grihapravesh</h3>
+        <p>Warm, auspicious meals to bless new beginnings with the fragrance of tradition and the abundance of home.</p>
+        <div class="service-line"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-top"><span class="service-no">IV</span><span class="service-emoji">🪔</span></div>
+        <h3>Private Parties &amp; Festivals</h3>
+        <p>Birthdays, anniversaries, Ugadi, Deepavali, Sankranti — your celebration deserves an authentic feast.</p>
+        <div class="service-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-head reveal">
+      <div>
+        <div class="tag">Authentic Presentation</div>
+        <h2 style="color:#f5ede0;">Food Gallery</h2>
+      </div>
+      <a href="https://www.instagram.com/anna_poorneshwari" target="_blank"><i class="fa-brands fa-instagram"></i> @anna_poorneshwari</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-big reveal"><img src="images/mandap.png" alt="Wedding mandap setup"></div>
+      <div class="reveal"><img src="images/payasam.png" alt="Golden payasam"></div>
+      <div class="reveal"><img src="images/pickles.png" alt="Pickles and chutneys"></div>
+      <div class="reveal"><img src="images/payasam.png" alt="Dessert close-up"></div>
+      <div class="reveal"><img src="images/pickles.png" alt="Traditional accompaniments"></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-head reveal">
+      <div class="tag" style="text-align:center;">Loved by Families</div>
+      <h2 style="color:#f5ede0;">What They Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The food tasted exactly like my mother's cooking. Every guest asked for the caterer's number."</blockquote>
+        <div class="review-name">Priya Sharma</div>
+        <div class="review-loc">JAYANAGAR, BENGALURU</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★☆</div>
+        <blockquote>"Professional service, beautiful banana leaf presentation, and perfect timing. Truly a class apart."</blockquote>
+        <div class="review-name">Rahul Menon</div>
+        <div class="review-loc">MANYATA TECH PARK</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We ordered for our daughter's naming ceremony. Everything was perfect. Thank you Amma's team!"</blockquote>
+        <div class="review-name">Lakshmi &amp; Suresh</div>
+        <div class="review-loc">BASAVANAGUDI, BENGALURU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="tag">Reach Out</div>
+      <h2>Ready to plan your next <span class="gold" style="font-style:italic;">grand feast?</span></h2>
+      <div class="rule" style="max-width:60px; margin-bottom:30px;"></div>
+      <p class="contact-intro">Tell us about your occasion. We'll craft a warm, personalized experience for you and your guests — every detail considered.</p>
+
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div><div class="contact-label">WhatsApp / Call</div><a href="https://wa.me/919113254993" class="contact-val">+91 91132 54993</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div><div class="contact-label">Email</div><a href="mailto:annapoorneshwaricatering25@gmail.com" class="contact-val">annapoorneshwaricatering25@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
+        <div><div class="contact-label">Instagram</div><a href="https://www.instagram.com/anna_poorneshwari" target="_blank" class="contact-val">@anna_poorneshwari</a></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="form-card">
+        <div class="form-tag">Send an Enquiry</div>
+        <form onsubmit="return false;">
+          <div class="field"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+          <div class="field-row">
+            <div class="field"><label>Phone</label><input type="tel" placeholder="+91"></div>
+            <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+          </div>
+          <div class="field"><label>Event Type &amp; Date</label><input type="text" placeholder="Wedding, Corporate · Preferred date"></div>
+          <div class="field"><label>Message</label><textarea rows="4" placeholder="Guest count, menu preferences, any special requirements..."></textarea></div>
+          <button type="button" class="submit-btn" onclick="alert('Thank you! We will get back to you shortly via WhatsApp or call.')">SEND ENQUIRY</button>
+          <p class="form-note">We usually respond within a few hours</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="rule" style="margin-bottom:36px;"></div>
+    <div class="footer-row">
+      <div>
+        <div class="footer-brand-small">Shree Annapoorneshwari</div>
+        <div class="footer-brand-big">Amma's Catering</div>
+      </div>
+      <div class="footer-meta">FRESH · HOMEMADE WITH LOVE · NO ARTIFICIAL ADDITIVES<br>© 2026 · BENGALURU, KARNATAKA</div>
+      <div class="footer-social">
+        <a href="https://wa.me/919113254993"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/anna_poorneshwari" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919113254993?text=Hello, I would like to enquire about catering for an event" class="wa-float">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
